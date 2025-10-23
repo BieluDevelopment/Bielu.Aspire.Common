@@ -10,7 +10,7 @@ public static class FileStoreExtensions
     {
         ArgumentNullException.ThrowIfNull(builder);
 
-        var store = new FileStore(name, sourcePath,isVolume);
+        var store = new FileStore(name, sourcePath,isVolume ,  builder.ExecutionContext.IsPublishMode);
 
         return builder.AddResource(store);
     }
