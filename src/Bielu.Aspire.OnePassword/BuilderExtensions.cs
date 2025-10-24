@@ -12,7 +12,7 @@ public static class BuilderExtensions
     {
         var buildCredentialVolume = builder.AddFileStore("onepasswordCredentialsVolume",
             builder.Configuration.GetValue<string>("OnePassword:ServiceUser:AuthFileLocation"), false);
-        var buildVolume = builder.AddFileStore("onepasswordDataVolume", "./onepasswordDataVolume", false);
+        var buildVolume = builder.AddFileStore("onepasswordDataVolume", builder.Configuration.GetValue<string>("OnePassword:ServiceUser:VolumeLocation"), false);
         var onePasswordConnectSync = builder.AddOnePasswordContainer("onepassword-connect-sync", "1password/connect-sync",
             buildVolume, buildCredentialVolume, 8081);
 
